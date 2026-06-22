@@ -179,23 +179,30 @@
       display: flex; align-items: center; justify-content: space-between;
       gap: 1rem;
       padding: 0.7rem clamp(1rem, 4vw, 2.25rem);
-      background: rgba(251,246,236,0.85);
+      background: #101010;
+      color: #FBF6EC;
       backdrop-filter: blur(10px);
-      border-bottom: 2.5px solid var(--ink);
+      border-bottom: 2.5px solid #101010;
     }
-    .nav-logo { display: flex; align-items: center; gap: 0.6rem; font-weight: 700; font-size: 1.35rem; }
+    .nav-logo {
+      display: flex; align-items: center; gap: 0.6rem;
+      font-weight: 700; font-size: 1.35rem;
+      color: #FBF6EC;
+    }
     .nav-logo img {
       width: 40px; height: 40px; object-fit: contain;
-      border: 2.5px solid var(--ink); border-radius: 10px; background: #fff; padding: 3px;
+      border: 2.5px solid #FBF6EC; border-radius: 10px; background: #FBF6EC; padding: 3px;
     }
     .nav-links { display: flex; align-items: center; gap: 1.75rem; list-style: none; }
     .nav-links a {
       font-size: 1.15rem; font-weight: 700; padding-bottom: 2px;
+      color: #FBF6EC;
       border-bottom: 2.5px solid transparent; transition: border-color 0.15s;
     }
-    .nav-links a:hover { border-bottom-color: var(--coral); }
+    .nav-links a:hover { border-bottom-color: var(--cyan); }
     .nav-burger {
-      display: none; background: var(--paper); border: 2.5px solid var(--ink);
+      display: none; background: #FBF6EC; color: #101010;
+      border: 2.5px solid #FBF6EC;
       border-radius: 10px; width: 44px; height: 44px; cursor: pointer;
       align-items: center; justify-content: center; box-shadow: var(--shadow-sm);
     }
@@ -203,11 +210,16 @@
     .nav-mobile {
       display: none; flex-direction: column; gap: 0.25rem;
       position: fixed; top: 64px; left: 0; right: 0; z-index: 99;
-      background: var(--paper); border-bottom: 2.5px solid var(--ink);
+      background: #101010; color: #FBF6EC;
+      border-bottom: 2.5px solid #FBF6EC;
       padding: 0.5rem clamp(1rem, 4vw, 2.25rem) 1.25rem;
     }
     .nav-mobile.open { display: flex; }
-    .nav-mobile a { font-size: 1.4rem; font-weight: 700; padding: 0.5rem 0; border-bottom: 1.5px solid var(--line); }
+    .nav-mobile a {
+      font-size: 1.4rem; font-weight: 700; padding: 0.5rem 0;
+      color: #FBF6EC;
+      border-bottom: 1.5px solid rgba(251,246,236,0.18);
+    }
 
     /* ============================================================ LAYOUT */
     .container { max-width: var(--maxw); margin: 0 auto; }
@@ -363,7 +375,8 @@
 
     /* ============================================================ FOOTER */
     .footer {
-      background: var(--ink); color: var(--paper);
+      background: #101010;
+      color: #FBF6EC;
       padding: 2.25rem clamp(1.1rem, 4vw, 2.25rem);
       display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
     }
