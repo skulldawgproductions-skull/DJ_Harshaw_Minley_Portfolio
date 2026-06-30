@@ -5,6 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SkullDAWG Productions — Services &amp; Rates</title>
 <meta name="description" content="Design services and rates for SkullDAWG Productions — branding, web, cover art, print, and social media.">
+<script>
+  (function () {
+    const stored = localStorage.getItem('theme');
+    document.documentElement.dataset.theme = stored || 'dark';
+  })();
+</script>
 <style>
 @font-face{font-family:'Gaegu';font-style:normal;font-weight:300;font-display:swap;src:url('assets/fonts/Gaegu-Light.woff2') format('woff2');}
 @font-face{font-family:'Gaegu';font-style:normal;font-weight:400;font-display:swap;src:url('assets/fonts/Gaegu-Regular.woff2') format('woff2');}
@@ -14,11 +20,18 @@
 
 
 :root{
+  --bg:#f4f1ea; --panel:#e9e4d8; --panel-2:#f7f4ed;
+  --text:#1b1b1b; --muted:#6b6459;
+  --red:#c0392b; --red-soft:#d85040;
+  --cyan:#0e89ad; --cyan-soft:#22add4;
+  --line:rgba(0,0,0,.10); --maxw:900px;
+}
+[data-theme="dark"]{
   --bg:#15171b; --panel:#1e2128; --panel-2:#23262e;
   --text:#ece7da; --muted:#aba499;
   --red:#d85040; --red-soft:#e8786a;
   --cyan:#22add4; --cyan-soft:#5bcdec;
-  --line:rgba(236,231,218,.12); --maxw:900px;
+  --line:rgba(236,231,218,.12);
 }
 *{box-sizing:border-box;}
 html{scroll-behavior:smooth;}
@@ -46,7 +59,9 @@ header.bar{
 .brand span{color:var(--red);}
 nav{display:flex;flex-wrap:wrap;gap:.3em 1.1em;font-size:.92rem;}
 nav a{color:var(--muted);text-decoration:none;padding:.15em 0;border-bottom:2px solid transparent;}
-nav a:hover{color:var(--text);border-bottom-color:var(--cyan);}
+nav a:hover{color:var(--text);border-bottom-color:var(--cyan);} 
+.theme-btn{display:inline-flex;align-items:center;justify-content:center;width:2.6rem;height:2.6rem;border:1px solid var(--line);border-radius:999px;background:var(--panel);color:var(--text);cursor:pointer;margin-left:.35rem;}
+.theme-btn:hover{border-color:var(--cyan);}
 
 /* LAYOUT */
 main{max-width:var(--maxw);margin:0 auto;padding:0 1.25rem 4rem;}
@@ -129,6 +144,9 @@ footer{max-width:var(--maxw);margin:0 auto;padding:2rem 1.25rem;color:var(--mute
       <a href="#process">How It Works</a>
       <a href="#start">Start</a>
     </nav>
+    <button id="themeToggle" class="theme-btn" type="button" aria-label="Switch to dark mode" title="Toggle light and dark mode">
+      <span class="theme-icon" aria-hidden="true">🌙</span>
+    </button>
   </div>
 </header>
 
@@ -223,6 +241,29 @@ footer{max-width:var(--maxw);margin:0 auto;padding:2rem 1.25rem;color:var(--mute
 <footer>
   SkullDAWG Productions &middot; Detroit, MI &middot; Skulldawgproductions@gmail.com &middot; &copy; 2026 DJ Harshaw-Minley. All rights reserved.
 </footer>
+
+<script>
+  const themeToggle = document.getElementById('themeToggle');
+  const themeIcon = document.querySelector('.theme-icon');
+
+  function applyTheme(theme) {
+    document.documentElement.dataset.theme = theme;
+    localStorage.setItem('theme', theme);
+    if (themeIcon) themeIcon.textContent = theme === 'dark' ? '☀️' : '🌙';
+    if (themeToggle) {
+      themeToggle.setAttribute('aria-label', theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
+      themeToggle.title = theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode';
+    }
+  }
+
+  const currentTheme = document.documentElement.dataset.theme || 'dark';
+  applyTheme(currentTheme);
+
+  themeToggle?.addEventListener('click', () => {
+    const nextTheme = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+    applyTheme(nextTheme);
+  });
+</script>
 
 </body>
 </html>
